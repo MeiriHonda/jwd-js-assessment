@@ -14,7 +14,7 @@
 
       3. Add 2 more questions to the app (each question must have 4 options) Done!!.
 
-      4. Reload the page when the reset button is clicked (hint: search window.location)
+      4. Reload the page when the reset button is clicked (hint: search window.location) Done!!
 
       5. Add a countdown timer - when the time is up, end the quiz, display the score and highlight the correct answers
 *************************** */
@@ -86,22 +86,53 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+          //correctAnswer.style.backgroundColor = "green";
         }
 
-        if (radioElement.checked) {
-          // code for task 1 goes here
-          console.log(score++);
-          document.getElementById('respNo').innerHTML = '<span>0/${score}</span>';
+        if (radioElement.checked ) {
+          // Calculate the score as the total of the number of correct answers
+          //document.getElementById('respNo').innerHTML = "/5";
         }
       }
     });
   };
-  function refresh() {    
+  function refresh() {
     setTimeout(function () {
         location.reload()
     }, 100);
 }
 document.getElementById('btnReset').addEventListener('click', refresh);
+
+/*Add an Event listener for the submit button, which will display the score and highlight the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you. */
+//function highlight () {
+  //document.getElementById('quizWrap').style.display = 'none';
+//}
+//document.getElementById('btnSubmit').addEventListener('click', highlight)
+
+// 5- Add a countdown timer - when the time is up, end the quiz, display the score and highlight correct answers
+let seconds=60;
+let timer;
+function myFunction() {
+  if(seconds < 60) { 
+    document.getElementById("time").innerHTML = seconds;
+  }
+  if (seconds > 0 ) {
+     seconds--;
+  } else {
+     clearInterval(timer);
+     document.getElementById('quizWrap').style.display = 'none';
+     alert(`You scored and the correct answers were `)
+     // Still need functions for score and getting correct answers!
+  }
+}
+document.getElementById("startBtn").onclick = function () {
+  if(!timer) {
+    timer = window.setInterval(function() {
+      myFunction();
+    }, 1000);
+  }
+}
+document.getElementById("time").innerHTML="1:00"; 
   // call the displayQuiz function
   displayQuiz();
 });
