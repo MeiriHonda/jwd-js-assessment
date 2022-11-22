@@ -90,13 +90,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (radioElement.checked) {
           // code for task 1 goes here
-          score++;
+          console.log(score++);
           document.getElementById('respNo').innerHTML = '<span>0/${score}</span>';
         }
       }
     });
   };
-  
+  function refresh() {    
+    setTimeout(function () {
+        location.reload()
+    }, 100);
+}
+document.getElementById('btnReset').addEventListener('click', refresh);
   // call the displayQuiz function
   displayQuiz();
 });
