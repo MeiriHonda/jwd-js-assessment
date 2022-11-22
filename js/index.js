@@ -89,12 +89,10 @@ window.addEventListener('DOMContentLoaded', () => {
           //liElement.style.backgroundColor = "green";
         }
 
-        if (radioElement.checked) {
+        if (radioElement.checke) {
           // Calculate the score as the total of the number of correct answers
-          if() {
-          let newScore = score++;
-          document.getElementById('respNo').innerHTML = `${newScore}/5`;
-          }
+          //let newScore = score++;
+          //document.getElementById('respNo').innerHTML = /5";
         }
       }
     });
