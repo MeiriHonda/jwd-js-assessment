@@ -9,7 +9,7 @@
     TASKS TODO:
       1. Calculate the score as the total of the number of correct answers
 
-      2. Add an Event listener for the submit button, which will display the score and highlight 
+      2. Add an Event listener for the submit button (done!!), which will display the score and highlight 
          the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you.
 
       3. Add 2 more questions to the app (each question must have 4 options) Done!!.
@@ -86,12 +86,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
-          //correctAnswer.style.backgroundColor = "green";
+          //liElement.style.backgroundColor = "green";
         }
 
-        if (radioElement.checked ) {
+        if (radioElement.checked) {
           // Calculate the score as the total of the number of correct answers
-          //document.getElementById('respNo').innerHTML = "/5";
+          if() {
+          let newScore = score++;
+          document.getElementById('respNo').innerHTML = `${newScore}/5`;
+          }
         }
       }
     });
@@ -104,16 +107,15 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('btnReset').addEventListener('click', refresh);
 
 /*Add an Event listener for the submit button, which will display the score and highlight the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you. */
-//function highlight () {
-  //document.getElementById('quizWrap').style.display = 'none';
-//}
-//document.getElementById('btnSubmit').addEventListener('click', highlight)
+document.getElementById('btnSubmit').addEventListener('click', function () {
+  alert(`You scored and the correct answers were `)
+})
 
 // 5- Add a countdown timer - when the time is up, end the quiz, display the score and highlight correct answers
 let seconds=60;
 let timer;
 function myFunction() {
-  if(seconds < 60) { 
+  if(seconds < 60) {
     document.getElementById("time").innerHTML = seconds;
   }
   if (seconds > 0 ) {
@@ -132,7 +134,7 @@ document.getElementById("startBtn").onclick = function () {
     }, 1000);
   }
 }
-document.getElementById("time").innerHTML="1:00"; 
+document.getElementById("time").innerHTML="1:00";
   // call the displayQuiz function
   displayQuiz();
 });
