@@ -12,7 +12,7 @@
       2. Add an Event listener for the submit button, which will display the score and highlight 
          the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you.
 
-      3. Add 2 more questions to the app (each question must have 4 options).
+      3. Add 2 more questions to the app (each question must have 4 options) Done!!.
 
       4. Reload the page when the reset button is clicked (hint: search window.location)
 
@@ -42,6 +42,16 @@ window.addEventListener('DOMContentLoaded', () => {
     {
       q: 'What is the capital of Australia',
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
+      a: 1,
+    },
+    {
+      q: 'Who is the author of Death on the Nile?',
+      o: ['Agatha Christie', 'Edgar Allan Poe', 'Paulo Coelho', 'Voltaire'],
+      a: 0,
+    },
+    {
+      q: 'What should you do if a bear tries to attack?',
+      o: ['Run', 'Make yourself seem bigger', 'Climb a tree', 'Use flaregun'],
       a: 1,
     },
   ];
@@ -80,11 +90,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (radioElement.checked) {
           // code for task 1 goes here
+          score++;
+          document.getElementById('respNo').innerHTML = '<span>0/${score}</span>';
         }
       }
     });
   };
-
+  
   // call the displayQuiz function
   displayQuiz();
 });
+
