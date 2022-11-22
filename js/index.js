@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
   // Basic ideas from https://code-boxx.com/simple-javascript-quiz/
+  const scoreSpan = document.getElementById("score");
   const quizArray = [
     {
       q: 'Which is the third planet from the sun?',
@@ -72,6 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
       quizWrap.innerHTML = quizDisplay;
     });
   };
+  
 
   // Calculate the score
   const calculateScore = () => {
@@ -84,18 +86,18 @@ window.addEventListener('DOMContentLoaded', () => {
         liElement = document.querySelector('#' + li);
         radioElement = document.querySelector('#' + r);
 
-        if (quizItem.a == i) {
-          //change background color of li element here
-          //liElement.style.backgroundColor = "green";
-        }
-
         if (radioElement.checked) {
           // Calculate the score as the total of the number of correct answers
-          //let newScore = score++;
-          //document.getElementById('respNo').innerHTML = /5";
+          if(quizItem.a == i) {
+            score++;
+            liElement.style.backgroundColor = "green";
+          } else {
+            liElement.style.backgroundColor = "red";
+          }
         }
       }
-    });
+    })
+    scoreSpan.innerHTML = `Your score is ${score}/5`;
   };
   function refresh() {
     setTimeout(function () {
@@ -105,9 +107,8 @@ window.addEventListener('DOMContentLoaded', () => {
 document.getElementById('btnReset').addEventListener('click', refresh);
 
 /*Add an Event listener for the submit button, which will display the score and highlight the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you. */
-document.getElementById('btnSubmit').addEventListener('click', function () {
-  alert(`You scored and the correct answers were `)
-})
+document.getElementById('btnSubmit').addEventListener('click', ()=> calculateScore());
+document.getElementById('btnSubmit').addEventListener('click', () => spanScore());
 
 // 5- Add a countdown timer - when the time is up, end the quiz, display the score and highlight correct answers
 let seconds=60;
@@ -120,9 +121,7 @@ function myFunction() {
      seconds--;
   } else {
      clearInterval(timer);
-     document.getElementById('quizWrap').style.display = 'none';
-     alert(`You scored and the correct answers were `)
-     // Still need functions for score and getting correct answers!
+     alert(`Time's up!`);
   }
 }
 document.getElementById("startBtn").onclick = function () {
