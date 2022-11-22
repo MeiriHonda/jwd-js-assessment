@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
           //liElement.style.backgroundColor = "green";
         }
 
-        if (radioElement.checke) {
+        if (radioElement.checked) {
           // Calculate the score as the total of the number of correct answers
           //let newScore = score++;
           //document.getElementById('respNo').innerHTML = /5";
