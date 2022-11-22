@@ -24,6 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
   start.addEventListener('click', function (e) {
     document.querySelector('#quizBlock').style.display = 'block';
     start.style.display = 'none';
+    countDown();
   });
   // quizArray QUESTIONS & ANSWERS
   // q = QUESTION, o = OPTIONS, a = CORRECT ANSWER
@@ -73,7 +74,6 @@ window.addEventListener('DOMContentLoaded', () => {
       quizWrap.innerHTML = quizDisplay;
     });
   };
-  
 
   // Calculate the score
   const calculateScore = () => {
@@ -99,6 +99,21 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     scoreSpan.innerHTML = `Your score is ${score}/5`;
   };
+  // 5- Add a countdown timer - when the time is up, end the quiz, display the score and highlight correct answers
+  const countDown = () => {
+    let seconds = 60;
+    let timer = setInterval(myTimer, 1000)
+    function myTimer() {
+      document.getElementById("time").innerHTML = `Seconds remaining ${seconds}`;
+      seconds--;
+      if(seconds === -1) {
+        clearInterval(timer);
+        calculateScore();
+        alert(`Time's up!`);
+
+      }
+    }
+  }
   function refresh() {
     setTimeout(function () {
         location.reload()
@@ -109,29 +124,6 @@ document.getElementById('btnReset').addEventListener('click', refresh);
 /*Add an Event listener for the submit button, which will display the score and highlight the correct answers when the button is clicked. Use the code from lines 67 to 86 to help you. */
 document.getElementById('btnSubmit').addEventListener('click', ()=> calculateScore());
 document.getElementById('btnSubmit').addEventListener('click', () => spanScore());
-
-// 5- Add a countdown timer - when the time is up, end the quiz, display the score and highlight correct answers
-let seconds=60;
-let timer;
-function myFunction() {
-  if(seconds < 60) {
-    document.getElementById("time").innerHTML = seconds;
-  }
-  if (seconds > 0 ) {
-     seconds--;
-  } else {
-     clearInterval(timer);
-     alert(`Time's up!`);
-  }
-}
-document.getElementById("startBtn").onclick = function () {
-  if(!timer) {
-    timer = window.setInterval(function() {
-      myFunction();
-    }, 1000);
-  }
-}
-document.getElementById("time").innerHTML="1:00";
   // call the displayQuiz function
   displayQuiz();
 });
